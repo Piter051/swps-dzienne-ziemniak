@@ -20,6 +20,11 @@ string player1 = GetCorrectsign("Player 1");
 
 string player2 = GetCorrectsign("Player 2");
 
+int secondsignIndex = allowedSigns.IndexOf(player2);
+
+int winningSignIndex = (secondsignIndex + 1)
+
+
 if (player1.Equals(player2, stringComparison))
 {
     Console.WriteLine("It's a draw!");
