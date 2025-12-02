@@ -29,7 +29,7 @@ const StringComparison stringComparison = StringComparison.OrdinalIgnoreCase;
 int player1Score = 0;
 int player2Score = 0;
 
-while (true)
+while (player1Score < 3 && player2Score < 3)
 {
     string player1 = GetCorrectsign("Player 1");
     string player2 = GetCorrectRandomSign("Player 2");
