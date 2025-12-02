@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Runtime.CompilerServices;
 List<string> allowedSigns = ["rock", "paper", "scissors"];
+
 string GetCorrectsign(string playerName)
 {   
     Console.WriteLine($"{playerName}, choose your sign ({string.Join('/', allowedSigns)})");
@@ -14,6 +15,7 @@ string GetCorrectsign(string playerName)
     }
     return sign;
 }
+
 string GetCorrectRandomSign(string playerName)
 {
     int signIndex = Random.Shared.Next(allowedSigns.Count);
@@ -24,9 +26,17 @@ string GetCorrectRandomSign(string playerName)
 }
 
 const StringComparison stringComparison = StringComparison.OrdinalIgnoreCase;
+int player1Score = 0;
+int player2Score = 0;
 
-string player1 = GetCorrectsign("Player 1");
-string player2 = GetCorrectRandomSign("Player 2");
+while (true)
+{
+    string player1 = GetCorrectsign("Player 1");
+    string player2 = GetCorrectRandomSign("Player 2");
+    //Console.WriteLine("Play again?");
+    //PlayerChoice = Console.ReadLine();
+    
+
 
 // 1. Pobierz indeks znaku podanego przez osobę drugą (np. 0, 1, 2) - nazwę to secondSignIndex
 int secondSignIndex = allowedSigns.IndexOf(player2);
@@ -43,8 +53,13 @@ if (player1.Equals(player2, stringComparison))
 else if (firstSignIndex == winningSignIndex)
 {
     Console.WriteLine("Player1 won!");
+    player1Score += 1;
 }
 else
 {
     Console.WriteLine("Player2 won!");
+    player2Score += 1;
+}
+Console.WriteLine($"First player:{player1Score}");
+Console.WriteLine($"Second player:{player2Score}");
 }
