@@ -29,7 +29,7 @@ const StringComparison stringComparison = StringComparison.OrdinalIgnoreCase;
 int player1Score = 0;
 int player2Score = 0;
 
-while (player1Score < 3 && player2Score < 3)
+while (true)
 {
     string player1 = GetCorrectsign("Player 1");
     string player2 = GetCorrectRandomSign("Player 2");
@@ -62,4 +62,9 @@ else
 }
 Console.WriteLine($"First player:{player1Score}");
 Console.WriteLine($"Second player:{player2Score}");
+
+if (player1Score >= 3 || player2Score >= 3)
+{
+   break;     
+}
 }
