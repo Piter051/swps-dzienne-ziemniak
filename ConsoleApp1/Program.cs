@@ -1,6 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Runtime.CompilerServices;
-List<string> allowedSigns = ["rock", "paper", "scissors"];
+List<string> allowedSigns = ["rock", "paper", "scissors", "lizard", "spock"];
+Dictionary<string, List<string>> winningMap = [];
+winningMap["rock"] = ["scissors", "lizard"];
+winningMap["paper"] = ["rock", "spock"];
+winningMap["scissors"] = ["paper", "lizard"];
+winningMap["lizard"] = ["paper", "spock"];
+winningMap["spock"] = ["rock", "scissors"];
 
 string GetCorrectsign(string playerName)
 {   
@@ -32,25 +38,15 @@ int player2Score = 0;
 while (true)
 {
     string player1 = GetCorrectsign("Player 1");
-    string player2 = GetCorrectRandomSign("Player 2");
-    //Console.WriteLine("Play again?");
-    //PlayerChoice = Console.ReadLine();
+    string player2 = GetCorrectsign("Player 2");
+
+    List<string> signsLosingWithFirstSign = winningMap[player1];
     
-
-
-    // 1. Pobierz indeks znaku podanego przez osobę drugą (np. 0, 1, 2) - nazwę to secondSignIndex
-    int secondSignIndex = allowedSigns.IndexOf(player2);
-    // 2. Wylicz indeks znaku, który wygrywa z podanym przez drugą  - wzór - (secondSignIndex + 1) % rozmiarListy
-    int winningSignIndex = (secondSignIndex + 1) % allowedSigns.Count;
-    // 3. Czy indeks znaku podanego przez pierwszą osobę to indeks wyliczony w punkcie 2.
-    int firstSignIndex = allowedSigns.IndexOf(player1);
-
-
     if (player1.Equals(player2, stringComparison))
     {
         Console.WriteLine("It's a draw!");
     }
-    else if (firstSignIndex == winningSignIndex)
+    else if (signsLosingWithFirstSign.Contains(player2, StringComparer.OrdinalIgnoreCase))
     {
         Console.WriteLine("Player1 won!");
         player1Score += 1;
