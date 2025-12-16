@@ -35,6 +35,12 @@ const StringComparison stringComparison = StringComparison.OrdinalIgnoreCase;
 int player1Score = 0;
 int player2Score = 0;
 
+Console.WriteLine("Player 1 what's your name?");
+string firstPlayerName = Console.ReadLine()!;
+
+Console.WriteLine("Player 2 what's your name?");
+string secondPlayername = Console.ReadLine()!;
+
 Console.WriteLine("How many wins?");
 string maxWinsText = Console.ReadLine()!;
 //int maxWins = int.Parse(maxWinsText);
@@ -60,16 +66,16 @@ while (player1Score < maxWins && player2Score < maxWins)
     }
     else if (signsLosingWithFirstSign.Contains(player2, StringComparer.OrdinalIgnoreCase))
     {
-        Console.WriteLine("Player1 won!");
+        Console.WriteLine($"{firstPlayerName} won!");
         player1Score += 1;
     }
     else
     {
-        Console.WriteLine("Player2 won!");
+        Console.WriteLine($"{secondPlayername} won!");
         player2Score += 1;
     }
-        Console.WriteLine($"First player:{player1Score}");
-        Console.WriteLine($"Second player:{player2Score}");
+        Console.WriteLine($"{firstPlayerName}:{player1Score}");
+        Console.WriteLine($"{secondPlayername}:{player2Score}");
 
     //if (player1Score >= maxWins || player2Score >= maxWins)
     //{
