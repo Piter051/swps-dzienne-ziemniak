@@ -35,7 +35,19 @@ const StringComparison stringComparison = StringComparison.OrdinalIgnoreCase;
 int player1Score = 0;
 int player2Score = 0;
 
-while (true)
+Console.WriteLine("How many wins?");
+string maxWinsText = Console.ReadLine()!;
+//int maxWins = int.Parse(maxWinsText);
+//int maxWins = Convert.ToInt32(maxWinsText);
+bool parsingResult = uint.TryParse(maxWinsText, out uint maxWins);
+
+while (!parsingResult || maxWins <= 0)
+{
+    maxWinsText = Console.ReadLine()!;
+    parsingResult = uint.TryParse(maxWinsText, out maxWins);
+}
+
+while (player1Score < maxWins && player2Score < maxWins)
 {
     string player1 = GetCorrectsign("Player 1");
     string player2 = GetCorrectsign("Player 2");
@@ -59,8 +71,8 @@ while (true)
         Console.WriteLine($"First player:{player1Score}");
         Console.WriteLine($"Second player:{player2Score}");
 
-    if (player1Score >= 3 || player2Score >= 3)
-    {
-        break;     
-    }
+    //if (player1Score >= maxWins || player2Score >= maxWins)
+    //{
+    //    break;     
+    //}
 }
