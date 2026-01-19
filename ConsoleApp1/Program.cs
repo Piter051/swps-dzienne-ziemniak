@@ -56,7 +56,7 @@ while (!parsingResult || maxWins <= 0)
 while (player1Score < maxWins && player2Score < maxWins)
 {
     string player1 = GetCorrectsign("Player 1");
-    string player2 = GetCorrectsign("Player 2");
+    string player2 = GetCorrectRandomSign("Player 2");
 
     List<string> signsLosingWithFirstSign = winningMap[player1];
     
